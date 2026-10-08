@@ -1,0 +1,88 @@
+:root {
+  --ink: #0f1b2d;
+  --mist: #e8eef2;
+  --saffron: #f2b134;
+  --muted: #9fb0c0;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+
+body {
+  background: radial-gradient(120% 90% at 70% 10%, #1a2c47 0%, var(--ink) 60%);
+  color: var(--mist);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+.stage { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+main { position: relative; z-index: 1; }
+
+.progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 5; }
+.progress-bar { height: 100%; background: var(--saffron); transform: scaleX(0); transform-origin: left; }
+
+.panel {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0 7vw;
+}
+.panel.left { justify-content: flex-start; }
+.panel.right { justify-content: flex-end; }
+.copy { max-width: 30rem; }
+
+h1, h2 {
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-weight: 800;
+  line-height: 1.02;
+  margin: 0 0 1.2rem;
+  letter-spacing: -0.02em;
+}
+h1 { font-size: clamp(2.8rem, 7vw, 5.6rem); }
+h2 { font-size: clamp(2rem, 4.4vw, 3.4rem); }
+.mask { display: block; overflow: hidden; padding-bottom: 0.08em; }
+.hero-line { display: inline-block; }
+
+p { color: var(--muted); max-width: 34ch; font-size: 1.05rem; margin: 0 0 1.4rem; }
+
+.link {
+  color: var(--saffron);
+  font-weight: 500;
+  text-underline-offset: 4px;
+}
+
+.skills { margin: 0; }
+.skills div { margin-bottom: 1.1rem; }
+.skills dt { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 1.15rem; }
+.skills dd { margin: 0.1rem 0 0; color: var(--muted); max-width: 34ch; }
+
+.choice { margin-top: 1.1rem; }
+.choice-label { display: block; font-size: 0.9rem; color: var(--muted); margin-bottom: 0.4rem; }
+.choice-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+.chip {
+  font: inherit;
+  color: var(--mist);
+  background: transparent;
+  border: 1px solid #3a4d68;
+  border-radius: 999px;
+  padding: 0.45rem 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.chip.on { background: var(--saffron); color: var(--ink); border-color: var(--saffron); }
+
+.swatch {
+  width: 2.2rem; height: 2.2rem;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+.swatch.on { outline: 2px solid var(--mist); outline-offset: 3px; }
+
+button:focus-visible, a:focus-visible { outline: 2px solid var(--mist); outline-offset: 3px; }
+
+@media (max-width: 700px) {
+  .panel.right { justify-content: flex-start; }
+  .copy { background: rgba(15, 27, 45, 0.6); padding: 1rem; border-radius: 12px; }
+}
